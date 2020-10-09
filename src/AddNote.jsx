@@ -38,7 +38,7 @@ export default class AddNote extends Component {
       headers: {
         'content-type': 'application/json'
       },
-      body: JSON.stringify(noteName, noteContent, noteFolderId)
+      body: JSON.stringify({"name": noteName.name, "content": noteContent.content, "folderId": noteFolderId.folderId})
     })
     .then(res => {
       if (!res.ok)

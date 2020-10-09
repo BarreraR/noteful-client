@@ -41,15 +41,15 @@ class App extends Component {
     handleAddFolder = folder => {
         this.setState({
           folders: this.state.folders
-            .concat([{ id: folder.id, name: folder.name }])       
+            .concat([ folder ])       
         })
     }
 
     handleAddNote = note => {
-        console.log(note)
+        // console.log(note)
         this.setState({
-          note: this.state.notes
-            .concat([{ id: note.id, name: note.name, modified: note.modified, content: note.content, folderId: note.folderId }])       
+          notes: this.state.notes
+            .concat([ note ])       
         })
     }
 
