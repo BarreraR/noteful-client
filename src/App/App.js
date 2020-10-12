@@ -9,6 +9,7 @@ import AddFolder from '../AddFolder';
 import AddNote from '../AddNote';
 import ApiContext from '../ApiContext';
 import config from '../config';
+import BoundaryError from '../BoundaryError';
 import './App.css';
 
 class App extends Component {
@@ -46,7 +47,6 @@ class App extends Component {
     }
 
     handleAddNote = note => {
-        // console.log(note)
         this.setState({
           notes: this.state.notes
             .concat([ note ])       
@@ -61,7 +61,7 @@ class App extends Component {
 
     renderNavRoutes() {
         return (
-            <>
+            <BoundaryError>
                 {['/', '/folder/:folderId'].map(path => (
                     <Route
                         exact
@@ -73,13 +73,13 @@ class App extends Component {
                 <Route path="/note/:noteId" component={NotePageNav} />
                 <Route path="/add-folder" component={NotePageNav} />
                 <Route path="/add-note" component={NotePageNav} />
-            </>
+            </BoundaryError>
         );
     }
 
     renderMainRoutes() {
         return (
-            <>
+            <BoundaryError>
                 {['/', '/folder/:folderId'].map(path => (
                     <Route
                         exact
@@ -91,7 +91,7 @@ class App extends Component {
                 <Route path="/note/:noteId" component={NotePageMain} />
                 <Route path="/add-folder" component={AddFolder} />
                 <Route path="/add-note" component={AddNote} />
-            </>
+            </BoundaryError>
         );
     }
 
